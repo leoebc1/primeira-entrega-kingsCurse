@@ -25,7 +25,19 @@ public class Guerreiro extends Personagem {
     @Override
     public int ataque(int armaduraInimigo) {
         int rolagem = Dados.rolarDado(6);
-        System.out.println("Voce golpeia com " + this.armaPrincipal.getNome());
+        if (this.armaPrincipal.getDistancia().equals("ranged")) {
+            if (this.armaPrincipal.getTipo().equals("magico")) {
+                System.out.println("Voce lança uma magia com " + this.armaPrincipal.getNome());
+            } else {
+                System.out.println("Voce dispara com " + this.armaPrincipal.getNome());
+            }
+        } else { 
+            if (this.armaPrincipal.getTipo().equals("magico")) {
+                System.out.println("Voce conjura uma magia com " + this.armaPrincipal.getNome());
+            } else {
+                System.out.println("Voce golpeia com " + this.armaPrincipal.getNome());
+            }
+        }
         if ((rolagem + this.agilidade) > armaduraInimigo) {
             return Dados.rolarDado(6) + this.forca;
         } else {
@@ -42,7 +54,7 @@ public class Guerreiro extends Personagem {
             System.out.println("Voce assume uma postura confiante e alveja o inimigo com um olhar furioso.");
             System.out.println("A agilidade do inimigo foi diminuida em " + efeito);
         } else {
-            System.out.println("Especial indisponivel");
+            System.out.println("Especial indisponivel, voce perdeu o turno.");
         }
 
     }
