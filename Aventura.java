@@ -21,7 +21,7 @@ public class Aventura {
     }
 
     public int exibirMenu(String... opcoes) {
-        int opcaoUsuario = -1; 
+        int opcaoUsuario = -1;
 
         while (true) {
             System.out.println("\nEscolha uma das opções:");
@@ -39,11 +39,9 @@ public class Aventura {
                 }
             } catch (Exception e) {
                 System.out.println("Entrada inválida. Por favor, insira um número.");
-                sc.nextLine(); 
+                sc.nextLine();
             }
         }
-
-        // Retorna a opção válida escolhida pelo usuário
         return opcaoUsuario;
     }
 
@@ -51,7 +49,7 @@ public class Aventura {
         boolean loopEvento01 = true;
         while (loopEvento01) {
             App.limparConsole();
-            System.out.println("Aventura 'A Taverna de Tennefort' iniciada!\n"
+            System.out.println("Aventura 'Kings Curse' iniciada!\n"
                     + "Voce esta em uma taverna movimentada na cidade de Tennefort.\n"
                     + "Voce eh " + this.jogador.getNome() + ", um mercenario de Vail Scaedu, um lugar distante, onde a sobrevivencia eh dificil.\n"
                     + "No entanto, apos semanas tentando encontrar trabalho, voce esta sem dinheiro e em busca de uma oportunidade.\n"
@@ -163,12 +161,23 @@ public class Aventura {
 
         System.out.println("A batalha está prestes a começar...");
 
-        Inimigo inimigo = new Inimigo("Assaltante", Dados.rolarDado(6), Dados.rolarMultiplo(6, 3), Dados.rolarDado(6));
-
+        Inimigo inimigo = new Inimigo("Assaltante", Dados.rolarMultiplo(6, 2), Dados.rolarMultiplo(6, 5), Dados.rolarDado(10));
 
         Batalha batalhaEvento04 = new Batalha(this.jogador, inimigo);
-        
-        boolean batalhaVencida = batalhaEvento04.iniciarBatalha();
+
+        int batalhaVencida = batalhaEvento04.iniciarBatalha();
+        App.limparConsole();
+        switch (batalhaVencida) {
+            case 1:
+                evento09();
+                break;
+            case 2:
+                evento11();
+                break;
+            case 0:
+                evento10();
+                break;
+        }
     }
 
     //pedir sopa de peixe com cebola
@@ -178,26 +187,39 @@ public class Aventura {
         System.out.println("de sopa de peixe com cebola, que tem um cheiro forte e desagradavel de peixe.");
         System.out.println("Mas quando voce experimenta, o sabor e suave e agradavel, perfeito para quem");
         System.out.println("esta com bastante fome.");
+        System.out.println();
+        System.out.println();
+        System.out.println("Tecle ENTER para continuar...");
         this.sc.nextLine();
         evento04();
     }
 
     //pedir assado de texugo
     private void evento06() {
+        App.limparConsole();
         System.out.println("O taverneiro vai ate atras do balcao e grita algo para algum funcionario na cozinha.");
         System.out.println("Ele parece estar irritado, mas logo retorna com um prato contendo um pedaço de carne");
         System.out.println("de texugo assada com batatas amassadas. O cheiro e forte e o prato solta bastante vapor.");
         System.out.println("Ao experimentar, a carne e borrachuda e com um sabor muito presente de gordura");
         System.out.println("e um sabor terroso e silvestre, distinto de outras carnes de caça. Nao e exatamente");
         System.out.println("agradavel, mas mata a fome.");
-        evento09();
+        System.out.println();
+        System.out.println();
+        System.out.println("Tecle ENTER para continuar...");
+
+        evento04();
     }
 
     private void evento07() {
+        App.limparConsole();
         System.out.println("Acha que eu estou brincando? O taverneiro resmunga para voce, com um estalar");
         System.out.println("de beicos, enquanto da meia volta. 'Da proxima vez va voce ate o balcao, seu");
         System.out.println("fanfarrão,' diz ele, retornando a passos firmes para tras do bar.");
-        evento09();
+        System.out.println();
+        System.out.println();
+        System.out.println("Tecle ENTER para continuar...");
+        this.sc.nextLine();
+        evento04();
     }
 
     private void evento08() {
@@ -209,11 +231,60 @@ public class Aventura {
         System.out.println("tambem nao paga bem. Mas e melhor do que passar fome... ou nao.\"");
         System.out.println("E entao, o homem gordo e grande da meia volta rindo, retira seu pano de cima");
         System.out.println("do ombro, atira-o por cima do balcao e volta para seus afazeres.");
-        evento09();
+        System.out.println();
+        System.out.println();
+        System.out.println("Tecle ENTER para continuar...");
+        this.sc.nextLine();
+        this.sc.nextLine();
+        evento04();
     }
 
     private void evento09() {
+        System.out.println("O assaltante cai sem vida no chao, e voce se prepara para partir para cima do proximo.");
+        System.out.println("Antes que consiga avancar, uma patrulha de oito guardas reais irrompe as portas da taverna.");
+        System.out.println("Eles usam armaduras gastas pelo uso, porem muito resistentes. Um equipamento que");
+        System.out.println("definitivamente nao se ve em qualquer lugar.");
+        System.out.println("E de conhecimento comum que os guardas de Tennefort sao muito bem treinados,");
+        System.out.println("e resistir a uma abordagem nunca e uma boa ideia.");
+        System.out.println();
+        System.out.println("Os guardas, com vozes firmes e ameacadoras, ordenam que todos os envolvidos sejam");
+        System.out.println("agrilhoados. Isso inclui os assaltantes caidos, voce, e ate mesmo outro cliente que");
+        System.out.println("partia com uma faca para cima de um dos outros assaltantes.");
+        System.out.println("O clima na taverna se torna ainda mais tenso, com o som de grilhoes sendo fechados");
+        System.out.println("e os murmurios assustados dos poucos clientes que permanecem afastados.");
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println("CONTINUA...");
+    }
 
+    private void evento10() {
+        System.out.println("Este e o fim da sua jornada.");
+        System.out.println("Sua vida se encerrou, e suas ambicoes foram apagadas.");
+        System.out.println("Talvez o destino fosse imutavel, ou talvez suas escolhas tenham levado a esse desfecho.");
+        System.out.println("De qualquer forma, voce agora descansa em um silencio eterno.");
+        System.out.println();
+        System.out.println("Fim de jogo.");
+    }
+
+    private void evento11() {
+        System.out.println("Voce consegue escapar do assaltante e ziguezagueia por entre as mesas e a confusao generalizada na taverna.");
+        System.out.println("Empurroes, gritos e o som de copos quebrando tornam o ambiente caotico enquanto voce avanca em direcao a porta.");
+        System.out.println("Porem, quando esta prestes a alcança-la, uma patrulha de oito guardas reais irrompe pelas portas da taverna.");
+        System.out.println("Eles usam armaduras gastas pelo uso, porem muito resistentes. Um equipamento que");
+        System.out.println("definitivamente nao se ve em qualquer lugar.");
+        System.out.println("E de conhecimento comum que os guardas de Tennefort sao muito bem treinados,");
+        System.out.println("e resistir a uma abordagem nunca e uma boa ideia.");
+        System.out.println();
+        System.out.println("Os guardas, com vozes firmes e ameacadoras, ordenam que todos os envolvidos sejam");
+        System.out.println("agrilhoados. Isso inclui os assaltantes, voce, e ate mesmo outro cliente que");
+        System.out.println("partia com uma faca para cima de um dos outros assaltantes.");
+        System.out.println("O clima na taverna se torna ainda mais tenso, com o som de grilhoes sendo fechados");
+        System.out.println("e os murmurios assustados dos poucos clientes que permanecem afastados.");
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println("CONTINUA...");
     }
 
 }
