@@ -35,7 +35,7 @@ public class App {
             escrever("Insira o nome do seu personagem: ");
             String nome = sc.nextLine();
 
-            escrever("Escolha sua classe: \n1 - Guerreiro\n2 - Mago\n3 - Arqueiro\n4 - Clérigo");
+            escrever("Escolha sua classe: \n1 - Guerreiro\n2 - Mago\n3 - Arqueiro");
             int opcaoUsuario = sc.nextInt();
             sc.nextLine();
 
@@ -45,11 +45,11 @@ public class App {
                     sustentaMenuCriarPersonagem = false;
                     break;
                 case 2:
-                    //jogador = new Mago(nome);
+                     jogador = new Mago(nome);
                     sustentaMenuCriarPersonagem = false;
                     break;
                 case 3:
-                    //jogador = new Arqueiro(nome); 
+                    jogador = new Arqueiro(nome); 
                     sustentaMenuCriarPersonagem = false;
                     break;
                 case 4:
